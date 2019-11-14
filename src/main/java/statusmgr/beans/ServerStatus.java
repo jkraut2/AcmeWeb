@@ -7,9 +7,9 @@ import servermgr.ServerManager;
  */
 public class ServerStatus {
 
-    private  long id;
-    private String contentHeader;
-    private String statusDesc = "Unknown";
+    protected long id;
+    protected String contentHeader;
+    protected String statusDesc = "Unknown";
 
     /**
      * Construct a ServerStatus using info passed in for identification, and obtaining current

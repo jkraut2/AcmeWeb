@@ -1,13 +1,14 @@
 package statusmgr;
 
-import java.util.ArrayList;
+
 import java.util.concurrent.atomic.AtomicLong;
 
-import statusmgr.beans.ServerStatus;
+
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
+import statusmgr.beans.*;
 
 /**
  * Controller for all web/REST requests about the status of servers
@@ -36,11 +37,51 @@ public class StatusController {
 
 
     @RequestMapping("/status")
-    public ServerStatus statusRequest(@RequestParam(value="name", defaultValue="Anonymous") String name, @RequestParam(value="details", defaultValue = "1,2,3,4")List <String> values ) {
+    public ServerStatus statusRequest(@RequestParam(value="name", defaultValue="Anonymous") String name, @RequestParam(value="details", required = false)List <String> values ) {
         for (int i = 0; i < values.size(); i++)
-        {System.out.println("*** DEBUG INFO ***" + values.get(i) );}
+        {System.out.println("*** DEBUG INFO ***" + values );}
 
         return new ServerStatus(counter.incrementAndGet(),
                             String.format(template, name));
     }
-}
+
+    /**
+     *
+     * @param name requester
+     * @param details requested details
+     * @return status of requested details
+     */
+    @RequestMapping(value = "/status/detailed")
+    public DetailedServerStatus getDetailedServiceStatus(@RequestParam(value="name", defaultValue="Anonymous") String name, @RequestParam (required = true) List<String> details)
+    {
+        ServerStatus status = new ServerStatus(counter.incrementAndGet(), String.format(template, name));
+
+        for (String detail : details)
+        {
+            if(detail == "operations")
+            {
+                OperationsDetailedServerStatus ods = new OperationsDetailedServerStatus(status);
+                return ods;
+            }
+
+                else if(detail == "extensions")
+                {
+                    ExtensionDetailedServerStatus eds = new ExtensionDetailedServerStatus(status);
+                    return eds;
+
+                }
+                else if(detail == "memory")
+                {
+                    MemoryDetailedServerStatus mds = new MemoryDetailedServerStatus(status);
+                    return mds;
+                }
+                else
+                {
+                    throw new InvalidDetailException();
+                }
+            }
+            return null;
+        }
+
+    }
+
