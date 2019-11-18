@@ -32,6 +32,12 @@ import statusmgr.beans.*;
 @RequestMapping("/server")
 public class StatusController {
 
+    static {
+        // For debug/demo purposes only, dump out class path to stdout to show where resources will come from
+        System.out.println("*** JAVA CLASS PATH***\n" +
+                System.getProperty("java.class.path").replace  (":", "      :      ") + "***********\n");
+    }
+
     protected static final String template = "Server Status requested by %s";
     protected final AtomicLong counter = new AtomicLong();
 
