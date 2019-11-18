@@ -1,4 +1,4 @@
-package statusmgr;
+package com.acme.statusmgr;
 
 
 import java.util.concurrent.atomic.AtomicLong;
@@ -58,28 +58,25 @@ public class StatusController {
 
         for (String detail : details)
         {
-            if(detail == "operations")
-            {
-                OperationsDetailedServerStatus ods = new OperationsDetailedServerStatus(status);
-                return ods;
-            }
-
-                else if(detail == "extensions")
-                {
+            switch(detail){
+                case "operations":
+                    OperationsDetailedServerStatus ods = new OperationsDetailedServerStatus(status);
+                    return ods;
+                case "extensions":
                     ExtensionDetailedServerStatus eds = new ExtensionDetailedServerStatus(status);
                     return eds;
-
-                }
-                else if(detail == "memory")
-                {
+                case "memory":
                     MemoryDetailedServerStatus mds = new MemoryDetailedServerStatus(status);
                     return mds;
-                }
-                else
+                default:
                 {
                     throw new InvalidDetailException();
                 }
             }
+
+
+
+        }
             return null;
         }
 

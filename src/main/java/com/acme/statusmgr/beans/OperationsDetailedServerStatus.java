@@ -20,7 +20,7 @@ public class OperationsDetailedServerStatus extends  DetailedServerStatus{
      * @return a string containing the server and operation status description
      */
     public String getStatusDesc(){
-        return ServerManager.getCurrentServerStatus() +
+        return ServerManager.getCurrentServerStatus() + "and" +
                 ServerManager.getCurrentOperations();
     }
 }
