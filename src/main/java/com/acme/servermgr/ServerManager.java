@@ -1,17 +1,30 @@
-package servermgr;
+package com.acme.servermgr;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 /**
  * Manage all servers (service providers) being tracked by the Acme server tracking system
- * For now just some simple static methods for use in school project
+ * For now just some simple methods for use in school project
  */
+@Component
 public class ServerManager {
+
+    /**
+     * Reference to a class that knows how to get details about what we are interested in on a server
+     */
+    @Autowired
+    private IMonitorableServer monitor;
 
     /**
      * Get the status of this server
      * @return a descriptive string about the servers status
      */
-    static public String getCurrentServerStatus() {
-        return "Server is up";
+    public String getCurrentServerStatus() {
+
+        String status = monitor.determineServerStatus();
+
+        return status;
     }
 
     /**
@@ -40,5 +53,5 @@ public class ServerManager {
     static public Boolean isOperatingNormally()
     {
         return true;
-    }
+    } //TODO should eventually use the monitor interface
 }
