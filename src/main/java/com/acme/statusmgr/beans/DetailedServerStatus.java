@@ -5,11 +5,11 @@ import servermgr.ServerManager;
 /**
  * Abstract class representing all types of detailed server status objects used to decorate server status objects.
  */
-public abstract class DetailedServerStatus {
+public abstract class DetailedServerStatus implements StatusInterface
+{
+    StatusInterface detailedServerStatus;
 
-    ServerStatus detailedServerStatus;
-
-    public DetailedServerStatus(ServerStatus serverStatus) { detailedServerStatus = serverStatus; }
+    public DetailedServerStatus(StatusInterface baseServerStatus) { detailedServerStatus = baseServerStatus; }
 
     public long getId() { return detailedServerStatus.getId(); }
 
@@ -18,5 +18,4 @@ public abstract class DetailedServerStatus {
     }
 
     abstract public String getStatusDesc();
-
 }

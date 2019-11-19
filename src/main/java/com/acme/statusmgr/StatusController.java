@@ -52,32 +52,30 @@ public class StatusController {
      * @return status of requested details
      */
     @RequestMapping(value = "/status/detailed")
-    public DetailedServerStatus getDetailedServiceStatus(@RequestParam(value="name", defaultValue="Anonymous") String name, @RequestParam (required = true) List<String> details)
+    public StatusInterface getDetailedServiceStatus(@RequestParam(value="name", defaultValue="Anonymous") String name, @RequestParam (required = true) List<String> details)
     {
-        ServerStatus status = new ServerStatus(counter.incrementAndGet(), String.format(template, name));
+        StatusInterface status = new ServerStatus(counter.incrementAndGet(), String.format(template, name));
 
         for (String detail : details)
         {
             switch(detail){
                 case "operations":
-                    OperationsDetailedServerStatus ods = new OperationsDetailedServerStatus(status);
-                    return ods;
+                    status = new OperationsDetailedServerStatus(status);
+                    break;
                 case "extensions":
-                    ExtensionDetailedServerStatus eds = new ExtensionDetailedServerStatus(status);
-                    return eds;
+                    status = new ExtensionDetailedServerStatus(status);
+                    break;
                 case "memory":
-                    MemoryDetailedServerStatus mds = new MemoryDetailedServerStatus(status);
-                    return mds;
+                   status = new MemoryDetailedServerStatus(status);
+                   break;
                 default:
                 {
                     throw new InvalidDetailException();
                 }
             }
 
-
-
         }
-            return null;
+            return status;
         }
 
     }

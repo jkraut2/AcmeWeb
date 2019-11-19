@@ -4,13 +4,13 @@ import servermgr.ServerManager;
 /**
  * Decorator class for server status objects where extension status has been requested.
  */
-public class ExtensionDetailedServerStatus extends DetailedServerStatus {
+public class ExtensionDetailedServerStatus implements StatusInterface {
 
     protected long id;
     protected String contentHeader;
     protected String statusDesc = "Unknown";
 
-    public ExtensionDetailedServerStatus(ServerStatus sStatus) {
+    public ExtensionDetailedServerStatus(ServerStatusInterface sStatus) {
         super(sStatus);
     }
     /**
@@ -18,8 +18,11 @@ public class ExtensionDetailedServerStatus extends DetailedServerStatus {
      * @return a string containing the server and extension status description
      */
     public String getStatusDesc(){
-        return ServerManager.getCurrentServerStatus() + "and" +
+        return ServerManager.getCurrentServerStatus() + ",and" +
                 ServerManager.getCurrentExtension();
     }
 
 }
+
+
+
