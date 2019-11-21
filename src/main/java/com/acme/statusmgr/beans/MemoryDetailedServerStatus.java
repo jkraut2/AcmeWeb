@@ -9,7 +9,7 @@ public class MemoryDetailedServerStatus implements StatusInterface {
     protected String contentHeader;
     protected String statusDesc = "Unknown";
 
-    public MemoryDetailedServerStatus(ServerStatusInterface sStatus) {
+    public MemoryDetailedServerStatus(StatusInterface sStatus) {
 
         super(sStatus);
 

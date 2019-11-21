@@ -11,7 +11,7 @@ public class OperationsDetailedServerStatus implements StatusInterface{
     protected String contentHeader;
     protected String statusDesc = "Unknown";
 
-    public OperationsDetailedServerStatus(ServerStatusInterface sStatus) {
+    public OperationsDetailedServerStatus(StatusInterface sStatus) {
 
         super(sStatus);
     }

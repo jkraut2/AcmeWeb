@@ -10,7 +10,7 @@ public class ExtensionDetailedServerStatus implements StatusInterface {
     protected String contentHeader;
     protected String statusDesc = "Unknown";
 
-    public ExtensionDetailedServerStatus(ServerStatusInterface sStatus) {
+    public ExtensionDetailedServerStatus(StatusInterface sStatus) {
         super(sStatus);
     }
     /**
