@@ -1,4 +1,5 @@
 
+
 package com.acme.statusmgr.beans;
 import com.acme.servermgr.ServerManager;
 

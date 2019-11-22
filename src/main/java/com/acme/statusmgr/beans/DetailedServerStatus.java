@@ -1,7 +1,9 @@
 
+
 package com.acme.statusmgr.beans;
 
 import com.acme.servermgr.ServerManager;
+
 
 /**
  * Abstract class representing all types of detailed server status objects used to decorate server status objects.
@@ -22,4 +24,3 @@ public abstract class DetailedServerStatus implements StatusInterface
     abstract public String getStatusDesc();
 
 }
-

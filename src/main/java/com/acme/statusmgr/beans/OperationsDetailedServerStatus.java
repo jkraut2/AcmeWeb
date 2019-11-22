@@ -1,13 +1,17 @@
 
+
 package com.acme.statusmgr.beans;
 import com.acme.servermgr.ServerManager;
+
 
 /**
  * Decorator class for server status objects where operation status has been requested.
  */
 
 
+
 public class OperationsDetailedServerStatus implements StatusInterface{
+
 
 
     protected long id;

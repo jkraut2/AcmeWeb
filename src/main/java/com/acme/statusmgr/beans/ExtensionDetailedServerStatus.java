@@ -1,6 +1,8 @@
 
+
 package com.acme.statusmgr.beans;
 import com.acme.servermgr.ServerManager;
+
 
 
 /**
@@ -16,7 +18,6 @@ public class ExtensionDetailedServerStatus implements StatusInterface {
 
 
     public ExtensionDetailedServerStatus(StatusInterface sStatus) {
-
         super(sStatus);
     }
     /**
@@ -30,4 +31,3 @@ public class ExtensionDetailedServerStatus implements StatusInterface {
     }
 
 }
-
