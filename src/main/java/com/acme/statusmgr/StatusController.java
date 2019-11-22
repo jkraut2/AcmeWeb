@@ -8,7 +8,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
-import statusmgr.beans.*;
+
+import com.acme.statusmgr.beans.*;
+
 
 /**
  * Controller for all web/REST requests about the status of servers
@@ -51,7 +53,7 @@ public class StatusController {
      * @param details requested details
      * @return status of requested details
      */
-    @RequestMapping(value = "/status/detailed")
+
     public StatusInterface getDetailedServiceStatus(@RequestParam(value="name", defaultValue="Anonymous") String name, @RequestParam (required = true) List<String> details)
     {
         StatusInterface status = new ServerStatus(counter.incrementAndGet(), String.format(template, name));
@@ -69,13 +71,16 @@ public class StatusController {
                    status = new MemoryDetailedServerStatus(status);
                    break;
                 default:
+
                 {
                     throw new InvalidDetailException();
                 }
             }
 
+
         }
             return status;
+
         }
 
     }
