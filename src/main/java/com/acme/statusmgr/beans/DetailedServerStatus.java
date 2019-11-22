@@ -1,3 +1,4 @@
+
 package com.acme.statusmgr.beans;
 
 import com.acme.servermgr.ServerManager;
@@ -5,12 +6,13 @@ import com.acme.servermgr.ServerManager;
 /**
  * Abstract class representing all types of detailed server status objects used to decorate server status objects.
  */
-public abstract class DetailedServerStatus {
 
-    ServerStatus detailedServerStatus;
+public abstract class DetailedServerStatus implements StatusInterface
+{
+    StatusInterface detailedServerStatus;
 
-    public DetailedServerStatus(ServerStatus serverStatus) { detailedServerStatus = serverStatus; }
-
+    public DetailedServerStatus(StatusInterface baseServerStatus) { detailedServerStatus = baseServerStatus; }
+    
     public long getId() { return detailedServerStatus.getId(); }
 
     public String getContentHeader() {
@@ -20,3 +22,4 @@ public abstract class DetailedServerStatus {
     abstract public String getStatusDesc();
 
 }
+

@@ -1,7 +1,9 @@
+
 package com.acme.statusmgr.beans;
 import com.acme.servermgr.ServerManager;
 
-public class MemoryDetailedServerStatus extends DetailedServerStatus {
+public class MemoryDetailedServerStatus implements StatusInterface {
+
     /**
      * Decorator class for server status objects where memory status has been requested.
      */
@@ -9,9 +11,10 @@ public class MemoryDetailedServerStatus extends DetailedServerStatus {
     protected String contentHeader;
     protected String statusDesc = "Unknown";
 
-    public MemoryDetailedServerStatus(ServerStatus sStatus) {
 
-       super(sStatus);
+    public MemoryDetailedServerStatus(StatusInterface sStatus) {
+
+        super(sStatus);
 
     }
 
@@ -20,7 +23,8 @@ public class MemoryDetailedServerStatus extends DetailedServerStatus {
      * @return a string containing the server and memory status description
      */
     public String getStatusDesc(){
-        return ServerManager.getCurrentServerStatus() +
+
+        return ServerManager.getCurrentServerStatus() + ",and" +
                 ServerManager.getCurrentMemory();
     }
 

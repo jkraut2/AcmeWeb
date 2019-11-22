@@ -1,4 +1,6 @@
+
 package com.acme.servermgr;
+
 
 /**
  * Manage all servers (service providers) being tracked by the Acme server tracking system
@@ -18,20 +20,26 @@ public class ServerManager {
      * Get the current operating status of this server
      * @return a descriptive string about the servers operating status
      */
-    static public String getCurrentOperations(){ return " and is operating normally";}
+
+    static public String getCurrentOperations(){ return " is operating normally";}
+
 
     /**
      * Get the extensions this server is currently using
      * @return a descriptive string about the current extensions
      */
     static public String  getCurrentExtension()
-    {return  " and is using these extensions : [Hypervisor, Kubernetes, RAID-6]";}
+
+    {return  " is using these extensions - [Hypervisor, Kubernetes, RAID-6]";}
+
 
     /**
      * Get the current memory status of this server
      * @return a descriptive string about the servers memory status
      */
-    static public String getCurrentMemory(){return " and the memory is low";}
+
+    static public String getCurrentMemory(){return " its memory is Running low";}
+
 
     /**
      * Find out if this server is operating normally

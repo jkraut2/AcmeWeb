@@ -8,7 +8,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
+
 import com.acme.statusmgr.beans.*;
+
 
 /**
  * Controller for all web/REST requests about the status of servers
@@ -51,36 +53,34 @@ public class StatusController {
      * @param details requested details
      * @return status of requested details
      */
-    @RequestMapping(value = "/status/detailed")
-    public DetailedServerStatus getDetailedServiceStatus(@RequestParam(value="name", defaultValue="Anonymous") String name, @RequestParam (required = true) List<String> details)
+
+    public StatusInterface getDetailedServiceStatus(@RequestParam(value="name", defaultValue="Anonymous") String name, @RequestParam (required = true) List<String> details)
     {
-        ServerStatus status = new ServerStatus(counter.incrementAndGet(), String.format(template, name));
+        StatusInterface status = new ServerStatus(counter.incrementAndGet(), String.format(template, name));
 
         for (String detail : details)
         {
-            if(detail == "operations")
-            {
-                OperationsDetailedServerStatus ods = new OperationsDetailedServerStatus(status);
-                return ods;
-            }
+            switch(detail){
+                case "operations":
+                    status = new OperationsDetailedServerStatus(status);
+                    break;
+                case "extensions":
+                    status = new ExtensionDetailedServerStatus(status);
+                    break;
+                case "memory":
+                   status = new MemoryDetailedServerStatus(status);
+                   break;
+                default:
 
-                else if(detail == "extensions")
-                {
-                    ExtensionDetailedServerStatus eds = new ExtensionDetailedServerStatus(status);
-                    return eds;
-
-                }
-                else if(detail == "memory")
-                {
-                    MemoryDetailedServerStatus mds = new MemoryDetailedServerStatus(status);
-                    return mds;
-                }
-                else
                 {
                     throw new InvalidDetailException();
                 }
             }
-            return null;
+
+
+        }
+            return status;
+
         }
 
     }
