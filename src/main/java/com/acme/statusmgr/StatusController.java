@@ -5,6 +5,10 @@ package com.acme.statusmgr;
 import java.util.concurrent.atomic.AtomicLong;
 
 
+import com.acme.statusmgr.beans.complex.ExtensionDetailedServerStatus;
+import com.acme.statusmgr.beans.complex.MemoryDetailedServerStatus;
+import com.acme.statusmgr.beans.complex.OperationsDetailedServerStatus;
+import com.acme.statusmgr.beans.complex.ServerStatus;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -62,7 +66,7 @@ public class StatusController {
      * @return status of requested details
      */
 
-    public StatusInterface getDetailedServiceStatus(@RequestParam(value="name", defaultValue="Anonymous") String name, @RequestParam (required = true) List<String> details)
+    public StatusInterface getDetailedServiceStatus(@RequestParam(value="name", defaultValue="Anonymous") String name, @RequestParam (required = true) List<String> details, @RequestParam (required = false) String levelofdetail)
     {
         StatusInterface status = new ServerStatus(counter.incrementAndGet(), String.format(template, name));
 

@@ -1,8 +1,9 @@
 
 
-package com.acme.statusmgr.beans;
+package com.acme.statusmgr.beans.complex;
 
 import com.acme.servermgr.ServerManager;
+import com.acme.statusmgr.beans.StatusInterface;
 
 
 /**

@@ -1,7 +1,9 @@
 
 
-package com.acme.statusmgr.beans;
+package com.acme.statusmgr.beans.complex;
 import com.acme.servermgr.ServerManager;
+import com.acme.statusmgr.beans.StatusInterface;
+import com.acme.statusmgr.beans.complex.DetailedServerStatus;
 
 
 /**
@@ -10,7 +12,7 @@ import com.acme.servermgr.ServerManager;
 
 
 
-public class OperationsDetailedServerStatus extends DetailedServerStatus{
+public class OperationsDetailedServerStatus extends DetailedServerStatus {
 
 
 
@@ -29,7 +31,7 @@ public class OperationsDetailedServerStatus extends DetailedServerStatus{
      */
     public String getStatusDesc(){
 
-        return ServerManager.getCurrentServerStatus() + ",and" +
+        return detailedServerStatus.getStatusDesc() + ",and" +
                 ServerManager.getCurrentOperations();
     }
 }
