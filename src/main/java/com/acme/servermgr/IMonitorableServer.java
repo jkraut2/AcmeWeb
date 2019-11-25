@@ -11,6 +11,23 @@ public interface IMonitorableServer {
      */
     String determineServerStatus();
 
+    /**
+     * @return A String representing current operations the server is running
+     */
+    String determineCurrentOperations();
 
-    // TODO probably should have other definitions of what a server monitor can do
+    /**
+     * @return A String representing current extensions the server is running
+     */
+    String determineCurrentExtension();
+
+    /**
+     * @return A String representing the server's current memory
+     */
+    String determineCurrentMemory();
+    /*
+        @return A boolean representing the that the server is operating memory
+     */
+    boolean isOperatingNormally();
+
 }

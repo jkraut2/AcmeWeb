@@ -10,7 +10,7 @@ import java.time.format.DateTimeFormatter;
  * Implement a 'real' server monitor, that gives back results that may differ from what unit tests expect.
  */
 @Service
-public class SlowRealMonitor implements IMonitorableServer      {
+public class SlowRealMonitor implements IMonitorableServer {
 
     public String determineServerStatus() {
         Boolean goodStatus = true;
@@ -26,6 +26,37 @@ public class SlowRealMonitor implements IMonitorableServer      {
         return goodStatus ? "Server is up and running well, #CPUs available is: " + origNumCPUs
                 : "Server is up with a varying number of available CPUs";
 
+    }
+
+    @Override
+    public String determineCurrentOperations() {
+        Runtime rt = Runtime.getRuntime();
+        return "fhskjfhskdjhvskjfdhvshvsl";
+    }
+
+    @Override
+    public String determineCurrentExtension() {
+        return "fsdvdfghlfhvdoifvdifubdufbd";
+    }
+
+    @Override
+    public String determineCurrentMemory() {
+        Runtime rt = Runtime.getRuntime();
+        return "has "+rt.freeMemory();
+    }
+
+    @Override
+    public boolean isOperatingNormally() {
+        boolean goodStatus = true;
+        int origNumCPUs;
+        Runtime rt = Runtime.getRuntime();
+
+        origNumCPUs = rt.availableProcessors();
+        wait4seconds();
+        if (rt.availableProcessors() != origNumCPUs) {
+            goodStatus = false;
+        }
+        return goodStatus;
     }
 
     /**
