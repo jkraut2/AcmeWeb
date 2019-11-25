@@ -10,7 +10,7 @@ import com.acme.servermgr.ServerManager;
 
 
 
-public class OperationsDetailedServerStatus implements StatusInterface{
+public class OperationsDetailedServerStatus extends DetailedServerStatus{
 
 
 

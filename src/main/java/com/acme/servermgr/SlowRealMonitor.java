@@ -10,7 +10,7 @@ import java.time.format.DateTimeFormatter;
  * Implement a 'real' server monitor, that gives back results that may differ from what unit tests expect.
  */
 @Service
-public class SlowRealMonitor   implements IMonitorableServer      {
+public class SlowRealMonitor implements IMonitorableServer      {
 
     public String determineServerStatus() {
         Boolean goodStatus = true;

@@ -1,16 +1,15 @@
 
 package com.acme.statusmgr.beans;
-import com.acme.Application;
+import com.acme.statusmgr.Application;
 import com.acme.servermgr.ServerManager;
-package com.acme.statusmgr.beans;
+
 
 
 /**
  * A POJO that represents Server Status and can be used to generate JSON for that status
  */
 
-public class ServerStatus extend DetailedServerStatus {
-
+public class ServerStatus implements StatusInterface {
 
 
     protected long id;
@@ -34,14 +33,14 @@ public class ServerStatus extend DetailedServerStatus {
      */
 
 
-    public ServerStatus(long id, String contentHeader) implements StatusInterface{
+    public ServerStatus(long id, String contentHeader){
 
 
         this.id = id;
         this.contentHeader = contentHeader;
 
         // Obtain current status of server
-        this.statusDesc = ServerManager.getCurrentServerStatus();
+        this.statusDesc = serverManager.getCurrentServerStatus();
 
 
         // Obtain and save reference to the ServerManager

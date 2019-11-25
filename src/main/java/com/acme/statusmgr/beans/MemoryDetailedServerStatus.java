@@ -3,7 +3,7 @@
 package com.acme.statusmgr.beans;
 import com.acme.servermgr.ServerManager;
 
-public class MemoryDetailedServerStatus implements StatusInterface {
+public class MemoryDetailedServerStatus extends DetailedServerStatus {
 
     /**
      * Decorator class for server status objects where memory status has been requested.

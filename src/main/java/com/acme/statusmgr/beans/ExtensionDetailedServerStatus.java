@@ -2,14 +2,14 @@
 
 package com.acme.statusmgr.beans;
 import com.acme.servermgr.ServerManager;
-
+import com.acme.statusmgr.beans.*;
 
 
 /**
  * Decorator class for server status objects where extension status has been requested.
  */
 
-public class ExtensionDetailedServerStatus implements StatusInterface {
+public class ExtensionDetailedServerStatus extends DetailedServerStatus {
 
 
     protected long id;
