@@ -28,7 +28,7 @@ public class ExtensionDetailedServerStatus extends DetailedServerStatus {
     public String getStatusDesc(){
       
         return detailedServerStatus.getStatusDesc() + ",and" +
-                ServerManager.getCurrentExtension();
+        detailedServerStatus.getServerManager(); }
     }
 
-}
+

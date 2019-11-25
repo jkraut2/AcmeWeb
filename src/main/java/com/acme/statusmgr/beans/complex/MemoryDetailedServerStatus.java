@@ -28,7 +28,7 @@ public class MemoryDetailedServerStatus extends DetailedServerStatus {
     public String getStatusDesc(){
 
         return detailedServerStatus.getStatusDesc() + ",and" +
-                ServerManager.getCurrentMemory();
+                detailedServerStatus.getServerManager();
     }
 
 }

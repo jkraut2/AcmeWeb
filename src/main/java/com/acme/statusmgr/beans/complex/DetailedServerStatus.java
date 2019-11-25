@@ -24,4 +24,7 @@ public abstract class DetailedServerStatus implements StatusInterface
 
     abstract public String getStatusDesc();
 
+    @Override
+    public ServerManager getServerManager() { return detailedServerStatus.getServerManager(); }
+
 }

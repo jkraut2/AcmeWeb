@@ -32,6 +32,6 @@ public class OperationsDetailedServerStatus extends DetailedServerStatus {
     public String getStatusDesc(){
 
         return detailedServerStatus.getStatusDesc() + ",and" +
-                ServerManager.getCurrentOperations();
+                detailedServerStatus.getServerManager();
     }
 }

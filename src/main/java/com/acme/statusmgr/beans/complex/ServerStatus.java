@@ -68,5 +68,10 @@ public class ServerStatus implements StatusInterface {
 
     }
 
+    // method accesses the server manager
+    public ServerManager getServerManager(){
+        return serverManager;
+    }
+
 
 }

@@ -6,6 +6,7 @@
  */
 
 package com.acme.statusmgr.beans;
+import com.acme.servermgr.ServerManager;
 
 public interface StatusInterface
 {
@@ -14,4 +15,7 @@ public interface StatusInterface
     String getContentHeader();
 
     String getStatusDesc();
+
+    // new interface field for monitor dependency
+    ServerManager getServerManager();
 }
