@@ -26,7 +26,7 @@ public interface IMonitorableServer {
      */
     String determineCurrentMemory();
     /*
-        @return A boolean representing the that the server is operating memory
+        @return A boolean representing the that the server is operating normally
      */
     boolean isOperatingNormally();
 

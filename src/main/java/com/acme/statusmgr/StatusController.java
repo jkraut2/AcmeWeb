@@ -1,19 +1,16 @@
 package com.acme.statusmgr;
 
-
-
 import java.util.concurrent.atomic.AtomicLong;
 
 
-import com.acme.statusmgr.beans.complex.ExtensionDetailedServerStatus;
-import com.acme.statusmgr.beans.complex.MemoryDetailedServerStatus;
-import com.acme.statusmgr.beans.complex.OperationsDetailedServerStatus;
 import com.acme.statusmgr.beans.complex.ServerStatus;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.beans.factory.annotation.Autowired;
 import java.util.List;
 import com.acme.statusmgr.beans.*;
+import com.acme.statusmgr.beans.simple.SimpleFactory;
 
 
 
@@ -45,15 +42,17 @@ public class StatusController {
                 System.getProperty("java.class.path").replace  (":", "      :      ") + "***********\n");
     }
 
+    @Autowired
+    private FactoryInterface serverStatusFactory;
 
     protected static final String template = "Server Status requested by %s";
     protected final AtomicLong counter = new AtomicLong();
 
 
     @RequestMapping("/status")
-    public ServerStatus statusRequest(@RequestParam(value="name", defaultValue="Anonymous") String name, @RequestParam(value="details", required = false)List <String> values ) {
-        for (int i = 0; i < values.size(); i++)
-        {System.out.println("*** DEBUG INFO ***" + values );}
+    public ServerStatus statusRequest(@RequestParam(value="name", defaultValue="Anonymous") String name, @RequestParam(value="details", required = false)List <String> details ) {
+        System.out.println("*** DEBUG INFO ***" + details);
+
 
         return new ServerStatus(counter.incrementAndGet(),
                             String.format(template, name));
@@ -68,19 +67,27 @@ public class StatusController {
 
     public StatusInterface getDetailedServiceStatus(@RequestParam(value="name", defaultValue="Anonymous") String name, @RequestParam (required = true) List<String> details, @RequestParam (required = false) String levelofdetail)
     {
-        StatusInterface status = new ServerStatus(counter.incrementAndGet(), String.format(template, name));
+        if(levelofdetail != null)
+        {
+            if(levelofdetail.equals("simple"))
+                serverStatusFactory = new SimpleFactory();
+            else if(!levelofdetail.equals("complex")) // because Spring default is complex
+                throw new InvalidLevelOfDetailException();
+        }
+
+        StatusInterface status = serverStatusFactory.getServerStatus(counter.incrementAndGet(), String.format(template, name));
 
         for (String detail : details)
         {
             switch(detail){
                 case "operations":
-                    status = new OperationsDetailedServerStatus(status);
+                    status = serverStatusFactory.getOperationsDetailedServerStatus(status);
                     break;
                 case "extensions":
-                    status = new ExtensionDetailedServerStatus(status);
+                    status = serverStatusFactory.getExtensionDetailedServerStatus(status);
                     break;
                 case "memory":
-                   status = new MemoryDetailedServerStatus(status);
+                    status = serverStatusFactory.getMemoryDetailedServerStatus(status);
                    break;
                 default:
                 {
