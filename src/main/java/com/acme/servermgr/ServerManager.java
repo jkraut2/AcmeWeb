@@ -33,16 +33,16 @@ public class ServerManager {
      * @return a descriptive string about the servers operating status
      */
 
-    static public String getCurrentOperations(){ return " and is operating normally";}
+     public String getCurrentOperations(){ return monitor.determineCurrentOperations();}
 
 
     /**
      * Get the extensions this server is currently using
      * @return a descriptive string about the current extensions
      */
-    static public String  getCurrentExtension()
+     public String  getCurrentExtension()
 
-    {return  " and is using these extensions : [Hypervisor, Kubernetes, RAID-6]";}
+    {return  monitor.determineCurrentExtension();}
 
 
     /**
@@ -50,17 +50,17 @@ public class ServerManager {
      * @return a descriptive string about the servers memory status
      */
 
-    static public String getCurrentMemory(){return " and the memory is low";}
+    public String getCurrentMemory(){return monitor.determineCurrentMemory();}
 
 
     /**
      * Find out if this server is operating normally
      * @return Boolean indicating if server is operating normally
      */
-    static public Boolean isOperatingNormally()
+     public Boolean isOperatingNormally()
     {
-        return true;
+        return monitor.isOperatingNormally();
 
-    } //TODO should eventually use the monitor interface
+    }
 
 }

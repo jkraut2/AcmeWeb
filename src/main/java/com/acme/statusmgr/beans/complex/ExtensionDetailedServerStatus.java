@@ -1,15 +1,16 @@
 
 
-package com.acme.statusmgr.beans;
+package com.acme.statusmgr.beans.complex;
 import com.acme.servermgr.ServerManager;
-
+import com.acme.statusmgr.beans.StatusInterface;
+import com.acme.statusmgr.beans.complex.DetailedServerStatus;
 
 
 /**
  * Decorator class for server status objects where extension status has been requested.
  */
 
-public class ExtensionDetailedServerStatus implements StatusInterface {
+public class ExtensionDetailedServerStatus extends DetailedServerStatus {
 
 
     protected long id;
@@ -26,8 +27,8 @@ public class ExtensionDetailedServerStatus implements StatusInterface {
      */
     public String getStatusDesc(){
       
-        return ServerManager.getCurrentServerStatus() + ",and" +
-                ServerManager.getCurrentExtension();
+        return detailedServerStatus.getStatusDesc() + ",and" +
+        detailedServerStatus.getServerManager(); }
     }
 
-}
+

@@ -1,8 +1,9 @@
 
 
-package com.acme.statusmgr.beans;
+package com.acme.statusmgr.beans.complex;
 
 import com.acme.servermgr.ServerManager;
+import com.acme.statusmgr.beans.StatusInterface;
 
 
 /**
@@ -22,5 +23,8 @@ public abstract class DetailedServerStatus implements StatusInterface
     }
 
     abstract public String getStatusDesc();
+
+    @Override
+    public ServerManager getServerManager() { return detailedServerStatus.getServerManager(); }
 
 }

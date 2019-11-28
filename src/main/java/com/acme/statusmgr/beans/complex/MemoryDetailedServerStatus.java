@@ -1,9 +1,11 @@
 
 
-package com.acme.statusmgr.beans;
+package com.acme.statusmgr.beans.complex;
 import com.acme.servermgr.ServerManager;
+import com.acme.statusmgr.beans.StatusInterface;
+import com.acme.statusmgr.beans.complex.DetailedServerStatus;
 
-public class MemoryDetailedServerStatus implements StatusInterface {
+public class MemoryDetailedServerStatus extends DetailedServerStatus {
 
     /**
      * Decorator class for server status objects where memory status has been requested.
@@ -25,8 +27,8 @@ public class MemoryDetailedServerStatus implements StatusInterface {
      */
     public String getStatusDesc(){
 
-        return ServerManager.getCurrentServerStatus() + ",and" +
-                ServerManager.getCurrentMemory();
+        return detailedServerStatus.getStatusDesc() + ",and" +
+                detailedServerStatus.getServerManager();
     }
 
 }
