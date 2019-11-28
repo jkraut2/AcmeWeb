@@ -39,10 +39,6 @@ public class ServerStatus implements StatusInterface {
         this.id = id;
         this.contentHeader = contentHeader;
 
-        // Obtain current status of server
-        this.statusDesc = serverManager.getCurrentServerStatus();
-
-
         // Obtain and save reference to the ServerManager
         serverManager = (ServerManager) Application.getApplicationContext().getBean("serverManager");
 
