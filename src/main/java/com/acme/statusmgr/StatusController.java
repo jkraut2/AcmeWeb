@@ -64,7 +64,7 @@ public class StatusController {
      * @param details requested details
      * @return status of requested details
      */
-
+    @RequestMapping(value = "/status/detailed")
     public StatusInterface getDetailedServiceStatus(@RequestParam(value="name", defaultValue="Anonymous") String name, @RequestParam (required = true) List<String> details, @RequestParam (required = false) String levelofdetail)
     {
         if(levelofdetail != null)
