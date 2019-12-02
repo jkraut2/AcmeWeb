@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import java.util.List;
 import com.acme.statusmgr.beans.*;
 import com.acme.statusmgr.beans.simple.SimpleFactory;
+import com.acme.diskmgr.*;
 
 
 
@@ -64,7 +65,7 @@ public class StatusController {
      * @param details requested details
      * @return status of requested details
      */
-
+    @RequestMapping(value = "/status/detailed")
     public StatusInterface getDetailedServiceStatus(@RequestParam(value="name", defaultValue="Anonymous") String name, @RequestParam (required = true) List<String> details, @RequestParam (required = false) String levelofdetail)
     {
         if(levelofdetail != null)
@@ -99,6 +100,10 @@ public class StatusController {
             return status;
 
         }
+    @RequestMapping("/disk/status")
+    public DiskStatus getDiskStatus(@RequestParam(value = "name", defaultValue = "Anonymous") String name) {
+        return new DiskStatus(counter.incrementAndGet(), String.format(template, name));
+    }
 
     }
 
