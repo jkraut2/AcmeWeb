@@ -1,6 +1,6 @@
 package com.acme.statusmgr.beans.simple;
 
-import com.acme.statusmgr.Application;
+import com.acme.Application;
 import com.acme.servermgr.ServerManager;
 import com.acme.statusmgr.beans.StatusInterface;
 import com.fasterxml.jackson.annotation.JsonInclude;
