@@ -31,12 +31,12 @@ public class SlowRealMonitor implements IMonitorableServer {
     @Override
     public String determineCurrentOperations() {
         Runtime rt = Runtime.getRuntime();
-        return "fhskjfhskdjhvskjfdhvshvsl";
+        return "is operating normally";
     }
 
     @Override
     public String determineCurrentExtension() {
-        return "fsdvdfghlfhvdoifvdifubdufbd";
+        return "is using extensions";
     }
 
     @Override
