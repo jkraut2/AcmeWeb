@@ -35,4 +35,9 @@ public class DiskStatus {
     public String getDiskCommand(){return diskCommand;}
 
     public String getDiskCommandOutput(){return diskCommandOutput;}
+
+    //command modifications
+    public void setDiskCommandOutput(String diskCommandOutput){this.diskCommandOutput = diskCommandOutput;}
+
+    public String generateDiskCommandOutput(){return DiskManager.checkDiskStatus();}
 }

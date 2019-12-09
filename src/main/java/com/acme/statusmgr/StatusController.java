@@ -12,6 +12,7 @@ import java.util.List;
 import com.acme.statusmgr.beans.*;
 import com.acme.statusmgr.beans.simple.SimpleFactory;
 import com.acme.diskmgr.*;
+import com.acme.statusmgr.Command.*;
 
 
 
@@ -102,7 +103,11 @@ public class StatusController {
         }
     @RequestMapping("/disk/status")
     public DiskStatus getDiskStatus(@RequestParam(value = "name", defaultValue = "Anonymous") String name) {
-        return new DiskStatus(counter.incrementAndGet(), String.format(template, name));
+
+        DiskStatusCommand command = new DiskStatusCommand(counter.incrementAndGet(), template, name);
+        SimpleExecutor executor = new SimpleExecutor(command);
+        executor.executeCommand();
+        return command.getResult();
     }
 
     }
