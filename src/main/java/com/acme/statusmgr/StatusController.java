@@ -10,8 +10,6 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.beans.factory.annotation.Autowired;
 import java.util.List;
 import com.acme.statusmgr.beans.*;
-import com.acme.statusmgr.beans.simple.SimpleFactory;
-import com.acme.diskmgr.*;
 import com.acme.statusmgr.Command.*;
 
 
@@ -23,7 +21,7 @@ import com.acme.statusmgr.Command.*;
  * Syntax for URLS:
  *    All start with /server
  *    /status  will give back status of server
- *    a param of 'name' specifies a requestor name to appear in response
+ *    a param of 'name' specifies a requester name to appear in response
  *
  * Examples:
  *    http://localhost:8080/server/status

@@ -31,6 +31,7 @@ public class DetailedServerStatusCommand implements ICommand {
         this.serverStatusFactory = serverStatusFactory;
     }
 
+    //put factory into the execute of command, as described in lecture.
     @Override
     public void execute()
     {
