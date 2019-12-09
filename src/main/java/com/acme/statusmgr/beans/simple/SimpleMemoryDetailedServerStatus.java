@@ -13,5 +13,6 @@ public class SimpleMemoryDetailedServerStatus extends SimpleDetailedServerStatus
      * @return a String representing the server status with extensions detail
      */
     @Override
-    public String getStatusDesc() { return detailedServerStatus.getStatusDesc() + ", and" + detailedServerStatus.getServerManager().getCurrentMemory(); }
+    public String generateStatusDesc() { return detailedServerStatus.generateStatusDesc() +
+            ", and" + detailedServerStatus.getServerManager().getCurrentMemory(); }
 }

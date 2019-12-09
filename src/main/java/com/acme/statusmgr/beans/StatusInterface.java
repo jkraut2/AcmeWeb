@@ -16,6 +16,11 @@ public interface StatusInterface
 
     String getStatusDesc();
 
+    //added methods to set and generate status desc to solve encapsulation anomaly.
+    String generateStatusDesc();
+
+    void setStatusDesc(String statusDesc);
+
     // new interface field for monitor dependency
     ServerManager getServerManager();
 }

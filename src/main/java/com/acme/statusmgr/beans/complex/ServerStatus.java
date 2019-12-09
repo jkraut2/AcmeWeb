@@ -44,25 +44,21 @@ public class ServerStatus implements StatusInterface {
 
     }
 
-    public ServerStatus() {
-
-    }
-
     public long getId() {
         return id;
     }
 
     public String getContentHeader() {
-
         return contentHeader;
     }
 
-
     public String getStatusDesc() {
-
-        return serverManager.getCurrentServerStatus();
-
+        return statusDesc;
     }
+
+    public String generateStatusDesc() { return serverManager.getCurrentServerStatus(); }
+
+    public void setStatusDesc(String statusDesc){this.statusDesc = statusDesc;}
 
     // method accesses the server manager
     public ServerManager getServerManager(){

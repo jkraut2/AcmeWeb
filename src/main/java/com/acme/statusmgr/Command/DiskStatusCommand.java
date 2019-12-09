@@ -2,7 +2,7 @@ package com.acme.statusmgr.Command;
 import com.acme.statusmgr.beans.DiskStatus;
 
     /**
-     *  A basic request to return the
+     *  A basic command to return the
      *  disk status.
      */
     public class DiskStatusCommand implements ICommand
