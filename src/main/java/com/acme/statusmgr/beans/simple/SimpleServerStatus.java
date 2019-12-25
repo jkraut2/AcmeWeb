@@ -39,7 +39,11 @@ public class SimpleServerStatus implements StatusInterface {
     @JsonInclude(JsonInclude.Include.NON_DEFAULT)
     public String getContentHeader() { return null; }
 
-    public String getStatusDesc() { return serverManager.getCurrentServerStatus(); }
+    public String getStatusDesc(){return statusDesc;}
+
+    public void setStatusDesc(String statusDesc){this.statusDesc = statusDesc;}
+
+    public String generateStatusDesc() { return serverManager.getCurrentServerStatus(); }
 
     public ServerManager getServerManager(){return serverManager;}
 

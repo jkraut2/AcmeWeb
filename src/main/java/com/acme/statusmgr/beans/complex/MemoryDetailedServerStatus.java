@@ -5,15 +5,11 @@ import com.acme.servermgr.ServerManager;
 import com.acme.statusmgr.beans.StatusInterface;
 import com.acme.statusmgr.beans.complex.DetailedServerStatus;
 
+/**
+ * Decorator class for server status objects where memory status has been requested.
+ */
+
 public class MemoryDetailedServerStatus extends DetailedServerStatus {
-
-    /**
-     * Decorator class for server status objects where memory status has been requested.
-     */
-    protected long id;
-    protected String contentHeader;
-    protected String statusDesc = "Unknown";
-
 
     public MemoryDetailedServerStatus(StatusInterface sStatus) {
 
@@ -22,13 +18,12 @@ public class MemoryDetailedServerStatus extends DetailedServerStatus {
     }
 
     /**
-     *
-     * @return a string containing the server and memory status description
+     * Overrides the base server status's getStatusDesc to add
+     * on to it the memory detail
+     * @return a String representing the server status with memory detail
      */
-    public String getStatusDesc(){
-
-        return detailedServerStatus.getStatusDesc() + ",and" +
-                detailedServerStatus.getServerManager();
-    }
+    @Override
+    public String generateStatusDesc() { return detailedServerStatus.generateStatusDesc() +
+            ", and"+ detailedServerStatus.getServerManager().getCurrentMemory();  }
 
 }

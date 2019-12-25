@@ -13,22 +13,23 @@ import com.acme.statusmgr.beans.complex.DetailedServerStatus;
 public class ExtensionDetailedServerStatus extends DetailedServerStatus {
 
 
-    protected long id;
-    protected String contentHeader;
-    protected String statusDesc = "Unknown";
-
 
     public ExtensionDetailedServerStatus(StatusInterface sStatus) {
         super(sStatus);
     }
+
     /**
+     * Overrides the base server status's getStatusDesc to add
+     * on to it the extensions detail
      *
-     * @return a string containing the server and extension status description
+     * @return a String representing the server status with extensions detail
      */
-    public String getStatusDesc(){
-      
-        return detailedServerStatus.getStatusDesc() + ",and" +
-        detailedServerStatus.getServerManager(); }
+    @Override
+    public String generateStatusDesc() {
+        return detailedServerStatus.generateStatusDesc() + ", and" +
+                detailedServerStatus.getServerManager().getCurrentExtension();
     }
+
+}
 
 

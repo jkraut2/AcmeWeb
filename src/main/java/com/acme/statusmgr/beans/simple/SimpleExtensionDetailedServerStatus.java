@@ -8,10 +8,11 @@ public class SimpleExtensionDetailedServerStatus extends SimpleDetailedServerSta
     { super(baseServerStatus); }
 
     /**
-     * Overrides the base server status getStatusDesc to add
-     * on the extensions detail
+     * Overrides the base server status's getStatusDesc to add
+     * on to it the extensions detail
      * @return a String representing the server status with extensions detail
      */
     @Override
-    public String getStatusDesc() { return detailedServerStatus.getStatusDesc() + ", and" + detailedServerStatus.getServerManager().getCurrentExtension(); }
+    public String generateStatusDesc() { return detailedServerStatus.generateStatusDesc() +
+            ", and"+detailedServerStatus.getServerManager().getCurrentExtension(); }
 }

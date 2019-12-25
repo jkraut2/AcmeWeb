@@ -1,6 +1,6 @@
 package com.acme.statusmgr.beans.simple;
-
 import com.acme.statusmgr.beans.StatusInterface;
+
 public class SimpleOperationsDetailedServerStatus extends SimpleDetailedServerStatus {
 
     public SimpleOperationsDetailedServerStatus(StatusInterface baseServerStatus)
@@ -12,5 +12,6 @@ public class SimpleOperationsDetailedServerStatus extends SimpleDetailedServerSt
      * @return a String representing the server status with operations detail
      */
     @Override
-    public String getStatusDesc() { return detailedServerStatus.getStatusDesc() + ", and" + detailedServerStatus.getServerManager().getCurrentOperations(); }
+    public String generateStatusDesc() { return detailedServerStatus.getStatusDesc() +
+            ", and" + detailedServerStatus.getServerManager().getCurrentOperations(); }
 }

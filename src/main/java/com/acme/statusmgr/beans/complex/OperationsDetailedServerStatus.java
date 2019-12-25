@@ -15,23 +15,17 @@ import com.acme.statusmgr.beans.complex.DetailedServerStatus;
 public class OperationsDetailedServerStatus extends DetailedServerStatus {
 
 
-
-    protected long id;
-    protected String contentHeader;
-    protected String statusDesc = "Unknown";
-
-
     public OperationsDetailedServerStatus(StatusInterface sStatus) {
 
         super(sStatus);
     }
-    /**
-     *
-     * @return a string containing the server and operation status description
-     */
-    public String getStatusDesc(){
 
-        return detailedServerStatus.getStatusDesc() + ",and" +
-                detailedServerStatus.getServerManager();
-    }
+    /**
+     * Overrides the base server status's getStatusDesc to add
+     * on to it the operations detail
+     * @return a String representing the server status with operations detail
+     */
+    @Override
+    public String generateStatusDesc() { return detailedServerStatus.generateStatusDesc() +
+            ", and"+detailedServerStatus.getServerManager().getCurrentOperations();  }
 }
