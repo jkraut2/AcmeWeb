@@ -16,7 +16,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @RunWith(SpringRunner.class)
 @SpringBootTest
 @AutoConfigureMockMvc
-public class SimpleStatusTests
+public class SimpleAndComplexDecoratorFactoryTests
 {
     @Autowired
     private MockMvc mockMvc;
@@ -44,7 +44,7 @@ public class SimpleStatusTests
                 .andDo(print()).andExpect(status().isOk())
                 .andExpect(jsonPath("$.contentHeader").exists())
                 .andExpect(jsonPath("id").exists())
-                .andExpect(jsonPath("$.statusDesc").value("Server is up, and its memory is Running low"));
+                .andExpect(jsonPath("$.statusDesc").value("Server is up,and its memory is Running low"));
     }
 
     @Test
@@ -55,7 +55,7 @@ public class SimpleStatusTests
                 .andDo(print()).andExpect(status().isOk())
                 .andExpect(jsonPath("$.contentHeader").exists())
                 .andExpect(jsonPath("id").exists())
-                .andExpect(jsonPath("$.statusDesc").value("Server is up, and its memory is Running low"));
+                .andExpect(jsonPath("$.statusDesc").value("Server is up,and its memory is Running low"));
     }
 
     @Test

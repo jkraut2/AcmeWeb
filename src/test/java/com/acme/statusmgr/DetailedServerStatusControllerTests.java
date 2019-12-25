@@ -36,7 +36,7 @@ public class DetailedServerStatusControllerTests {
                 .param("details", "operations"))
                 .andDo(print()).andExpect(status().isOk())
                 .andExpect(jsonPath("$.contentHeader").value("Server Status requested by Anonymous")).
-                andExpect(jsonPath("$.statusDesc").value("Server is up ,and is operating normally"));
+                andExpect(jsonPath("$.statusDesc").value("Server is up,and is operating normally"));
     }
 
     @Test
@@ -46,19 +46,19 @@ public class DetailedServerStatusControllerTests {
                 .param("details", "operations,extensions"))
                 .andDo(print()).andExpect(status().isOk())
                 .andExpect(jsonPath("$.contentHeader").value("Server Status requested by Anonymous")).
-                andExpect(jsonPath("$.statusDesc").value("Server is up ,and is operating normally "+
+                andExpect(jsonPath("$.statusDesc").value("Server is up,and is operating normally"+
                         ",and is using these extensions - [Hypervisor, Kubernetes, RAID-6]"));
     }
 
     @Test
-    public void namelesspParamOperationsExtensionsMemoryDetailsRequest() throws Exception
+    public void namelessParamOperationsExtensionsMemoryDetailsRequest() throws Exception
     {
         this.mockMvc.perform(get("/server/status/detailed")
                 .param("details", "operations,extensions,memory"))
                 .andDo(print()).andExpect(status().isOk())
                 .andExpect(jsonPath("$.contentHeader").value("Server Status requested by Anonymous")).
-                andExpect(jsonPath("$.statusDesc").value("Server is up ,and is operating normally ,and is "+
-                        "using these extensions - [Hypervisor, Kubernetes, RAID-6] ,and its memory is Running low"));
+                andExpect(jsonPath("$.statusDesc").value("Server is up,and is operating normally,and is "+
+                        "using these extensions - [Hypervisor, Kubernetes, RAID-6],and its memory is Running low"));
     }
 
     @Test
@@ -68,9 +68,9 @@ public class DetailedServerStatusControllerTests {
                 .param("details", "operations,extensions,memory")
                 .param("name", "Zev")) // my name
                 .andDo(print()).andExpect(status().isOk())
-                .andExpect(jsonPath("$.contentHeader").value("Server Status requested by Noach")).
-                andExpect(jsonPath("$.statusDesc").value("Server is up ,and is operating normally " +
-                        ",and is using these extensions - [Hypervisor, Kubernetes, RAID-6] ,and its memory is Running low"));
+                .andExpect(jsonPath("$.contentHeader").value("Server Status requested by Zev")).
+                andExpect(jsonPath("$.statusDesc").value("Server is up,and is operating normally" +
+                        ",and is using these extensions - [Hypervisor, Kubernetes, RAID-6],and its memory is Running low"));
     }
 
     @Test
@@ -80,8 +80,8 @@ public class DetailedServerStatusControllerTests {
                 .param("name", "Zev")
                 .param("details", "operations,memory"))
                 .andDo(print()).andExpect(status().isOk())
-                .andExpect(jsonPath("$.contentHeader").value("Server Status requested by Noach")).
-                andExpect(jsonPath("$.statusDesc").value("Server is up ,and is operating normally "
+                .andExpect(jsonPath("$.contentHeader").value("Server Status requested by Zev")).
+                andExpect(jsonPath("$.statusDesc").value("Server is up,and is operating normally"
                         +",and its memory is Running low"));
     }
 
@@ -91,8 +91,8 @@ public class DetailedServerStatusControllerTests {
         this.mockMvc.perform(get("/server/status/detailed?details=extensions,memory&name=Noach"))
                 .andDo(print()).andExpect(status().isOk())
                 .andExpect(jsonPath("$.contentHeader").value("Server Status requested by Noach")).
-                andExpect(jsonPath("$.statusDesc").value("Server is up ,and is using these extensions "+
-                        "- [Hypervisor, Kubernetes, RAID-6] ,and its memory is Running low"));
+                andExpect(jsonPath("$.statusDesc").value("Server is up,and is using these extensions "+
+                        "- [Hypervisor, Kubernetes, RAID-6],and its memory is Running low"));
     }
 
     @Test
@@ -101,8 +101,8 @@ public class DetailedServerStatusControllerTests {
         this.mockMvc.perform(get("/server/status/detailed?name=Noach&details=extensions,memory"))
                 .andDo(print()).andExpect(status().isOk())
                 .andExpect(jsonPath("$.contentHeader").value("Server Status requested by Noach")).
-                andExpect(jsonPath("$.statusDesc").value("Server is up ,and is using these extensions" +
-                        " - [Hypervisor, Kubernetes, RAID-6] ,and its memory is Running low"));
+                andExpect(jsonPath("$.statusDesc").value("Server is up,and is using these extensions" +
+                        " - [Hypervisor, Kubernetes, RAID-6],and its memory is Running low"));
     }
 
     @Test
@@ -112,9 +112,9 @@ public class DetailedServerStatusControllerTests {
                 .param("details", "memory,operations,extensions,memory"))
                 .andDo(print()).andExpect(status().isOk())
                 .andExpect(jsonPath("$.contentHeader").value("Server Status requested by Anonymous")).
-                andExpect(jsonPath("$.statusDesc").value("Server is up, and its memory is Running low," +
-                        " and is operating normally and is using these extensions - [Hypervisor, " +
-                        "Kubernetes, RAID-6] and its memory is Running low"));
+                andExpect(jsonPath("$.statusDesc").value("Server is up,and its memory is Running low," +
+                        "and is operating normally,and is using these extensions - [Hypervisor, " +
+                        "Kubernetes, RAID-6],and its memory is Running low"));
     }
 
     @Test
