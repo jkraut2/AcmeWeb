@@ -19,7 +19,7 @@ public class DiskStatusCommandNameVerifierDecorator extends DiskStatusCommandDec
             if(name == null || name.equals("Anonymous"))
                 throw new InvalidNameException();
             else{
-                LOGGER.info("User "+name+" was given disk status ");
+                LOGGER.info("User "+name+" was allowed to access disk status information ");
             }
 
 
