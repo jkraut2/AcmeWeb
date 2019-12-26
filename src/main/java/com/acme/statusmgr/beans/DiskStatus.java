@@ -11,6 +11,8 @@ public class DiskStatus {
     private String contentHeader;
     private String diskCommand = "du -c -d1  /";
     private String diskCommandOutput;
+    private long timeExecuted;
+
 
     /**
      * Construct a DiskStatus using info passed in for identification, and obtaining current
@@ -40,4 +42,9 @@ public class DiskStatus {
     public void setDiskCommandOutput(String diskCommandOutput){this.diskCommandOutput = diskCommandOutput;}
 
     public String generateDiskCommandOutput(){return DiskManager.checkDiskStatus();}
+
+    public long getTimeExecuted() { return timeExecuted; }
+
+    public void setTimeExecuted(long timeExecuted) { this.timeExecuted = timeExecuted; }
+
 }

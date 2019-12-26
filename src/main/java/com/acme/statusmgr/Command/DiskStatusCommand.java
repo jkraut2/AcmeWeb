@@ -5,7 +5,7 @@ import com.acme.statusmgr.beans.DiskStatus;
      *  A basic command to return the
      *  disk status.
      */
-    public class DiskStatusCommand implements ICommand
+    public class DiskStatusCommand implements IDiskStatusCommand
     {
         private DiskStatus result;
         private long id;
@@ -30,8 +30,10 @@ import com.acme.statusmgr.beans.DiskStatus;
         {
             result = new DiskStatus(id, String.format(template, name));
             result.setDiskCommandOutput(result.generateDiskCommandOutput());
+            result.setTimeExecuted(System.currentTimeMillis());
         }
 
+        @Override
         public DiskStatus getResult(){return result;}
     }
 
