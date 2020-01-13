@@ -11,8 +11,8 @@ started.
  */
 public class DiskStatusCommandQuickReturnDecorator extends DiskStatusCommandDecorator {
 
-    static DiskStatus recentDiskStatus;
-    private DiskStatus result;
+    private static DiskStatus recentDiskStatus;
+
 
     public DiskStatusCommandQuickReturnDecorator(IDiskStatusCommand baseDiskStatusCommand)
     {
@@ -32,9 +32,6 @@ public class DiskStatusCommandQuickReturnDecorator extends DiskStatusCommandDeco
             throw new DiskStatusUnavailableException();
         }
     }
-
-    @Override
-    public DiskStatus getResult() { return result; }
 
 
     /**
